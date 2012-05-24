@@ -53,7 +53,7 @@ BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 consoleblank=0
 
 # Inline kernel building
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
-TARGET_KERNEL_CONFIG := cyanogenmod_galaxys2_defconfig
+TARGET_KERNEL_CONFIG := aokp_galaxys2_defconfig
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
