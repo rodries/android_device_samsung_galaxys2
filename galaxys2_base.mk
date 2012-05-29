@@ -47,7 +47,6 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_COPY_FILES += \
-	device/samsung/galaxys2/configs/nvram_net.txt:system/etc/nvram_net.txt \
 	device/samsung/galaxys2/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
 	device/samsung/galaxys2/configs/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
@@ -79,6 +78,11 @@ PRODUCT_PACKAGES += \
     libhwconverter \
     libs5pjpeg \
     libfimg
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # MFC API
 PRODUCT_PACKAGES += \
