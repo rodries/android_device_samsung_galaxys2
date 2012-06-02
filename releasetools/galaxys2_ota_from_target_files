@@ -60,16 +60,23 @@ def WriteFullOTAPackage(input_zip, output_zip):
 
   AppendAssertions(script, input_zip)
   device_specific.FullOTA_Assertions()
-  if OPTIONS.backuptool:
-    script.RunBackup("backup")
+#  if OPTIONS.backuptool:
+#    script.RunBackup("backup")
 
   script.ShowProgress(0.5, 0)
 
-  if OPTIONS.wipe_user_data:
-    script.FormatPartition("/data")
+#  if OPTIONS.wipe_user_data:
+#    script.FormatPartition("/data")
+
+  script.Unmount("/cache")
+  script.Unmount("/data")
+  script.Mount("/cache")
+  script.Mount("/data")
+  CleanCaches()
+
 
   script.Unmount("/system")
-  script.FormatPartition("/system")
+#  script.FormatPartition("/system")
   script.Mount("/system")
   script.UnpackPackageDir("recovery", "/system")
   script.UnpackPackageDir("system", "/system")
@@ -88,12 +95,12 @@ def WriteFullOTAPackage(input_zip, output_zip):
 
   script.ShowProgress(0.2, 0)
 
-  if OPTIONS.backuptool:
-    script.ShowProgress(0.2, 10)
-    script.RunBackup("restore")
+#  if OPTIONS.backuptool:
+#    script.ShowProgress(0.2, 10)
+#    script.RunBackup("restore")
 
   script.ShowProgress(0.2, 10)
-  script.EMMCWriteRawImage("/dev/block/mmcblk0p5", "boot.img")
+#  script.EMMCWriteRawImage("/dev/block/mmcblk0p5", "boot.img")
 
   script.ShowProgress(0.1, 0)
   device_specific.FullOTA_InstallEnd()

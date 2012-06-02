@@ -44,3 +44,7 @@ class EdifyGenerator(edify_generator.EdifyGenerator):
         self.script.append('unmount("%s");' %
 								(p.mount_point))
         self.mounts.add(p.mount_point)
+
+    def CleanCaches(self):
+      self.script.append('delete_recursive("/data/dalvik-cache");')
+      self.script.append('delete_recursive("/cache");')
