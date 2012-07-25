@@ -101,7 +101,7 @@ adb pull /system/lib/libtvoutinterface.so ../../../vendor/$MANUFACTURER/$COMMON/
 adb pull /system/lib/libtvoutservice.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libtvoutservice.so
 
 # CAMERA
-adb pull /system/lib/hw/vendor-camera.exynos4.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/camera.exynos4.so
+adb pull /system/lib/hw/camera.exynos4.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/camera.exynos4.so
 adb pull /system/lib/libcaps.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libcaps.so
 adb pull /system/cameradata/datapattern_420sp.yuv ../../../vendor/$MANUFACTURER/$COMMON/proprietary/datapattern_420sp.yuv
 adb pull /system/cameradata/datapattern_front_420sp.yuv ../../../vendor/$MANUFACTURER/$COMMON/proprietary/datapattern_front_420sp.yuv
@@ -136,6 +136,8 @@ adb pull /system/vendor/firmware/libpn544_fw.so ../../../vendor/$MANUFACTURER/$C
 
 # MFC Firmware
 adb pull /system/vendor/firmware/mfc_fw.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/mfc_fw.bin
+adb pull /system/vendor/firmware/libpn544_fw.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libpn544_fw.so
+
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__COMMON__/$COMMON/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2012 The CyanogenMod Project
@@ -307,7 +309,8 @@ PRODUCT_COPY_FILES += \\
 
 # MFC Firmware
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/mfc_fw.bin:system/vendor/firmware/mfc_fw.bin
+    vendor/__MANUFACTURER__/__COMMON__/proprietary/mfc_fw.bin:system/vendor/firmware/mfc_fw.bin \\
+    vendor/__MANUFACTURER__/__COMMON__/proprietary/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so    
 
 EOF
 
